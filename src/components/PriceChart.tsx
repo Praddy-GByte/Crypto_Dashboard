@@ -8,6 +8,7 @@ import {
   Title,
   Tooltip,
   Legend,
+  ChartOptions,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import { MarketChartData } from '../services/cryptoService';
@@ -40,11 +41,11 @@ export const PriceChart: React.FC<PriceChartProps> = ({ data, currency }) => {
     ],
   };
 
-  const options = {
+  const options: ChartOptions<'line'> = {
     responsive: true,
     plugins: {
       legend: {
-        position: 'top' as const,
+        position: 'top',
       },
       title: {
         display: true,
@@ -54,7 +55,9 @@ export const PriceChart: React.FC<PriceChartProps> = ({ data, currency }) => {
     scales: {
       y: {
         ticks: {
-          callback: (value: number) => `${currency.toUpperCase()} ${value}`,
+          callback: function(value) {
+            return `${currency.toUpperCase()} ${value}`;
+          },
         },
       },
     },

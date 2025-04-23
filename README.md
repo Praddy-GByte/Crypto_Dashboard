@@ -45,4 +45,4 @@ This project uses the [CoinGecko API](https://www.coingecko.com/en/api) to fetch
 
 ## License
 
-MIT 
+MIT
